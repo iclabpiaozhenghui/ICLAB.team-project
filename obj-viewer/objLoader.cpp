@@ -44,14 +44,14 @@ void Capture_OpenGLViewPort(cv::Mat& copy)
 	//get current viewport
 	glGetIntegerv(GL_VIEWPORT, viewport);
 
-	int rows = viewport[3] * 1;   //Çà
-	int cols = viewport[2] * 1;   //·Ä
+	int rows = viewport[3] * 1;   //í–‰
+	int cols = viewport[2] * 1;   //ë ¬
 
 	bits = new GLubyte[cols * 3 * rows];
 
 	//read pixel from frame buffer
 	glFinish(); //finish all commands of OpenGL
-	glPixelStorei(GL_PACK_ALIGNMENT, 1); //or glPixelStorei(GL_PACK_ALIGNMENT,4);   //¿Ö 1ÀÏ±î 0ºÎÅÍ°¡ ¾Æ´Ï°í...
+	glPixelStorei(GL_PACK_ALIGNMENT, 1); //or glPixelStorei(GL_PACK_ALIGNMENT,4);   //ì™œ 1ì¼ê¹Œ 0ë¶€í„°ê°€ ì•„ë‹ˆê³ ...
 	glPixelStorei(GL_PACK_ROW_LENGTH, 0);
 	glPixelStorei(GL_PACK_SKIP_ROWS, 0);
 	glPixelStorei(GL_PACK_SKIP_PIXELS, 0);
@@ -137,7 +137,7 @@ void OBJLoader(string path, int i, vector<data_seq>& sequence, vector<int>& text
 				string value2;
 				string value3;
 
-				file >> value1; // º¯¼ö ¾÷µ¥ÀÌÆ® ÀÔÃâ·Â ¿¬»êÀÚ
+				file >> value1; // ë³€ìˆ˜ ì—…ë°ì´íŠ¸ ì…ì¶œë ¥ ì—°ì‚°ì
 				file >> value2;
 				file >> value3;
 
@@ -145,8 +145,8 @@ void OBJLoader(string path, int i, vector<data_seq>& sequence, vector<int>& text
 				vector<string> uv_index = split(value2, "/");
 				vector<string> normal_index = split(value3, "/");
 
-				int face_index1 = std::atoi(face_index[0].c_str()); // C++ÀÇ Atoi´Â ¹®ÀÚ¿­ °ªÀ» Á¤¼ö °ªÀ¸·Î º¯È¯ÇÏ´Â µ¥ »ç¿ëµÇ´Â cstdlib Çì´õ ÆÄÀÏÀÇ ¹Ì¸® Á¤ÀÇµÈ ÇÔ¼öÀÔ´Ï´Ù.
-				int uv_index1 = std::atoi(face_index[1].c_str()); // c_str() °³Ã¼ÀÇ ÇöÀç °ªÀ» ³ªÅ¸³»´Â null·Î ³¡³ª´Â ¹®ÀÚ ½ÃÄö½º¸¦ Æ÷ÇÔÇÏ´Â ¹è¿­¿¡ ´ëÇÑ Æ÷ÀÎÅÍ¸¦ ¹İÈ¯ÇÏ´Â C++ÀÇ ³»Àå ÇÔ¼öÀÔ´Ï´Ù.
+				int face_index1 = std::atoi(face_index[0].c_str()); // C++ì˜ AtoiëŠ” ë¬¸ìì—´ ê°’ì„ ì •ìˆ˜ ê°’ìœ¼ë¡œ ë³€í™˜í•˜ëŠ” ë° ì‚¬ìš©ë˜ëŠ” cstdlib í—¤ë” íŒŒì¼ì˜ ë¯¸ë¦¬ ì •ì˜ëœ í•¨ìˆ˜ì…ë‹ˆë‹¤.
+				int uv_index1 = std::atoi(face_index[1].c_str()); // c_str() ê°œì²´ì˜ í˜„ì¬ ê°’ì„ ë‚˜íƒ€ë‚´ëŠ” nullë¡œ ëë‚˜ëŠ” ë¬¸ì ì‹œí€€ìŠ¤ë¥¼ í¬í•¨í•˜ëŠ” ë°°ì—´ì— ëŒ€í•œ í¬ì¸í„°ë¥¼ ë°˜í™˜í•˜ëŠ” C++ì˜ ë‚´ì¥ í•¨ìˆ˜ì…ë‹ˆë‹¤.
 				int normal_index1 = std::atoi(face_index[2].c_str());
 
 				int face_index2 = std::atoi(uv_index[0].c_str());
@@ -220,12 +220,12 @@ void OBJLoader(string path, int i, vector<data_seq>& sequence, vector<int>& text
 }
 
 
-void render_slider(glfw_state& app_state) // GLFW´Â µ¥½ºÅ©Å¾¿¡¼­ OpenGL, OpenGL ES ¹× Vulkan °³¹ßÀ» À§ÇÑ ¿ÀÇÂ ¼Ò½º, ´ÙÁß ÇÃ·§Æû ¶óÀÌºê·¯¸®ÀÔ´Ï´Ù. Ã¢, ÄÁÅØ½ºÆ® ¹× Ç¥¸éÀ» ¸¸µé°í ÀÔ·Â ¹× ÀÌº¥Æ®¸¦ ¼ö½ÅÇÏ±â À§ÇÑ °£´ÜÇÑ API¸¦ Á¦°øÇÕ´Ï´Ù. GLFW´Â C·Î ÀÛ¼ºµÇ¾úÀ¸¸ç Windows, macOS, X11 ¹× Wayland¸¦ Áö¿øÇÕ´Ï´Ù. GLFW´Â zlib/libpng ¶óÀÌ¼±½º¿¡ µû¶ó ¶óÀÌ¼±½º°¡ ºÎ¿©µË´Ï´Ù.
+void render_slider(glfw_state& app_state) // GLFWëŠ” ë°ìŠ¤í¬íƒ‘ì—ì„œ OpenGL, OpenGL ES ë° Vulkan ê°œë°œì„ ìœ„í•œ ì˜¤í”ˆ ì†ŒìŠ¤, ë‹¤ì¤‘ í”Œë«í¼ ë¼ì´ë¸ŒëŸ¬ë¦¬ì…ë‹ˆë‹¤. ì°½, ì»¨í…ìŠ¤íŠ¸ ë° í‘œë©´ì„ ë§Œë“¤ê³  ì…ë ¥ ë° ì´ë²¤íŠ¸ë¥¼ ìˆ˜ì‹ í•˜ê¸° ìœ„í•œ ê°„ë‹¨í•œ APIë¥¼ ì œê³µí•©ë‹ˆë‹¤. GLFWëŠ” Cë¡œ ì‘ì„±ë˜ì—ˆìœ¼ë©° Windows, macOS, X11 ë° Waylandë¥¼ ì§€ì›í•©ë‹ˆë‹¤. GLFWëŠ” zlib/libpng ë¼ì´ì„ ìŠ¤ì— ë”°ë¼ ë¼ì´ì„ ìŠ¤ê°€ ë¶€ì—¬ë©ë‹ˆë‹¤.
 {
-	//¡°static const¡± is basically a combination of static(a storage specifier) and const(a type qualifier).
-	//ImGui´Â ºü¸¥ ¹İº¹À» °¡´ÉÇÏ°Ô ÇÏ°í ÇÁ·Î±×·¡¸Ó°¡ ÄÜÅÙÃ÷ »ı¼º µµ±¸ ¹× ½Ã°¢È­/µğ¹ö±× µµ±¸¸¦ ¸¸µé ¼ö ÀÖµµ·Ï ¼³°èµÇ¾ú½À´Ï´Ù(ÀÏ¹İ ÃÖÁ¾ »ç¿ëÀÚ¸¦ À§ÇÑ UI(»ç¿ëÀÚ ÀÎÅÍÆäÀÌ½º(UI)´Â ÀåÄ¡¿¡¼­ ÀÎ°£-ÄÄÇ»ÅÍ »óÈ£ ÀÛ¿ë ¹× Åë½ÅÀÇ ÁöÁ¡ÀÔ´Ï´Ù.)¿Í ¹İ´ë).
+	//â€œstatic constâ€ is basically a combination of static(a storage specifier) and const(a type qualifier).
+	//ImGuiëŠ” ë¹ ë¥¸ ë°˜ë³µì„ ê°€ëŠ¥í•˜ê²Œ í•˜ê³  í”„ë¡œê·¸ë˜ë¨¸ê°€ ì½˜í…ì¸  ìƒì„± ë„êµ¬ ë° ì‹œê°í™”/ë””ë²„ê·¸ ë„êµ¬ë¥¼ ë§Œë“¤ ìˆ˜ ìˆë„ë¡ ì„¤ê³„ë˜ì—ˆìŠµë‹ˆë‹¤(ì¼ë°˜ ìµœì¢… ì‚¬ìš©ìë¥¼ ìœ„í•œ UI(ì‚¬ìš©ì ì¸í„°í˜ì´ìŠ¤(UI)ëŠ” ì¥ì¹˜ì—ì„œ ì¸ê°„-ì»´í“¨í„° ìƒí˜¸ ì‘ìš© ë° í†µì‹ ì˜ ì§€ì ì…ë‹ˆë‹¤.)ì™€ ë°˜ëŒ€).
 	static const int flags = ImGuiWindowFlags_NoCollapse  // Disable user collapsing window by double-clicking on it
-		| ImGuiWindowFlags_NoSavedSettings // Never load/save settings in .ini file(ini ÆÄÀÏÀº °í·ÁµÇ´Â Ç×¸ñÀÌ ÀÌ¸§=°ª °ø½ÄÀ» »ç¿ëÇÏ´Â ¹®ÀÚ¿­ ¸ñ·ÏÀ» ÀúÀåÇÏ´Â µ¥ »ç¿ëµÇ´Â ÆÄÀÏÀÔ´Ï´Ù.)
+		| ImGuiWindowFlags_NoSavedSettings // Never load/save settings in .ini file(ini íŒŒì¼ì€ ê³ ë ¤ë˜ëŠ” í•­ëª©ì´ ì´ë¦„=ê°’ ê³µì‹ì„ ì‚¬ìš©í•˜ëŠ” ë¬¸ìì—´ ëª©ë¡ì„ ì €ì¥í•˜ëŠ” ë° ì‚¬ìš©ë˜ëŠ” íŒŒì¼ì…ë‹ˆë‹¤.)
 		| ImGuiWindowFlags_NoTitleBar // Disable title-bar
 		| ImGuiWindowFlags_NoResize; // Disable user resizing with the lower-right grip
 
@@ -233,7 +233,7 @@ void render_slider(glfw_state& app_state) // GLFW´Â µ¥½ºÅ©Å¾¿¡¼­ OpenGL, OpenGL 
 	ImGui::SetNextWindowSize({ 430, 300 }); // set next window size. set axis to 0.0f to force an auto-fit on this axis. call before Begin()
 
 	ImGui::Begin("slider", nullptr, flags); // push window to the stack and start appending to it. see .cpp for details. return false when window is collapsed, so you can early out in your code. 'bool* p_open' creates a widget on the upper-right to close the window (which sets your bool to false).
-	// nullptr Å°¿öµå´Â null Æ÷ÀÎÅÍ °ªÀ» ³ªÅ¸³À´Ï´Ù. null Æ÷ÀÎÅÍ °ªÀ» »ç¿ëÇÏ¿© °³Ã¼ ÇÚµé, ³»ºÎ Æ÷ÀÎÅÍ ¶Ç´Â ±âº» Æ÷ÀÎÅÍ À¯ÇüÀÌ °³Ã¼¸¦ °¡¸®Å°Áö ¾ÊÀ½À» ³ªÅ¸³À´Ï´Ù.
+	// nullptr í‚¤ì›Œë“œëŠ” null í¬ì¸í„° ê°’ì„ ë‚˜íƒ€ëƒ…ë‹ˆë‹¤. null í¬ì¸í„° ê°’ì„ ì‚¬ìš©í•˜ì—¬ ê°œì²´ í•¸ë“¤, ë‚´ë¶€ í¬ì¸í„° ë˜ëŠ” ê¸°ë³¸ í¬ì¸í„° ìœ í˜•ì´ ê°œì²´ë¥¼ ê°€ë¦¬í‚¤ì§€ ì•ŠìŒì„ ë‚˜íƒ€ëƒ…ë‹ˆë‹¤.
 	ImGui::Checkbox("normal ver", &normal_bool);
 	ImGui::SameLine();
 	ImGui::Checkbox("rgb ver", &RGB_bool);
@@ -391,18 +391,18 @@ void OBJViewer(int data_num, vector<data_seq>& sequence, vector<texture_image> t
 	int w_w = 1000;
 	int w_h = 1000;
 
-	//glfw ÃÊ±âÈ­
+	//glfw ì´ˆê¸°í™”
 	//glfwInit();
 	//GLFWwindow* window = glfwCreateWindow(w_w, w_h, "OBJ", 0, 0);
 	//glfwMakeContextCurrent(window);
 
 	window app(w_w, w_h, "3D Mesh");		
-//	window app(OBJ_WIDTH + 430, OBJ_HEIGHT, "3D Mesh");		////+430 ºÎºĞ¿¡ ½½¶óÀÌµå ¹Ù ÀÖÀ½
+//	window app(OBJ_WIDTH + 430, OBJ_HEIGHT, "3D Mesh");		////+430 ë¶€ë¶„ì— ìŠ¬ë¼ì´ë“œ ë°” ìˆìŒ
 	ImGui_ImplGlfw_Init(app, false);
 
 	glfw_state app_state;// Struct for managing rotation of pointcloud view
 
-	register_glfw_callbacks(app, app_state); //Æ÷ÀÎÆ® Å¬¶ó¿ìµå¸¦ ¸¶¿ì½º·Î Á¦¾îÇÒ ¼ö ÀÖµµ·Ï »óÅÂ º¯¼ö¿Í Äİ¹éÀ» µî·ÏÇÕ´Ï´Ù.
+	register_glfw_callbacks(app, app_state); //í¬ì¸íŠ¸ í´ë¼ìš°ë“œë¥¼ ë§ˆìš°ìŠ¤ë¡œ ì œì–´í•  ìˆ˜ ìˆë„ë¡ ìƒíƒœ ë³€ìˆ˜ì™€ ì½œë°±ì„ ë“±ë¡í•©ë‹ˆë‹¤.
 
 	//printf("%s\n", tex_path);
 	//printf("%s\n", tex_path2);
@@ -437,26 +437,26 @@ void OBJViewer(int data_num, vector<data_seq>& sequence, vector<texture_image> t
 
 		glViewport(0, 0, w_w, w_h);
 
-		glLoadIdentity(); // ÇöÀç Çà·ÄÀ» ´ÜÀ§ Çà·Ä·Î ¹Ù²ãÁØ´Ù.
+		glLoadIdentity(); // í˜„ì¬ í–‰ë ¬ì„ ë‹¨ìœ„ í–‰ë ¬ë¡œ ë°”ê¿”ì¤€ë‹¤.
 		glPushAttrib(GL_ALL_ATTRIB_BITS); // push and pop the server attribute stack, The special mask can be used to save all stackable states.
 
 		//	glClearColor(0.0, 0.0, 1.0, 1.0);
 		//	glClear(GL_COLOR_BUFFER_BIT);
 
-		glClear(GL_DEPTH_BUFFER_BIT); // clear buffers to preset values, Áö¿ï ¹öÆÛ¸¦ ³ªÅ¸³»´Â ¸¶½ºÅ©ÀÇ ºñÆ®´Â ORÀÌ´Ù.
+		glClear(GL_DEPTH_BUFFER_BIT); // clear buffers to preset values, ì§€ìš¸ ë²„í¼ë¥¼ ë‚˜íƒ€ë‚´ëŠ” ë§ˆìŠ¤í¬ì˜ ë¹„íŠ¸ëŠ” ORì´ë‹¤.
 
-		glMatrixMode(GL_PROJECTION);// ÇöÀç Çà·ÄÀÌ ¾î¶² Çà·ÄÀÎÁö ÁöÁ¤, Åõ¿µ Çà·Ä ½ºÅÃ¿¡ ÈÄ¼Ó Çà·Ä ¿¬»êÀ» Àû¿ëÇÑ´Ù.
+		glMatrixMode(GL_PROJECTION);// í˜„ì¬ í–‰ë ¬ì´ ì–´ë–¤ í–‰ë ¬ì¸ì§€ ì§€ì •, íˆ¬ì˜ í–‰ë ¬ ìŠ¤íƒì— í›„ì† í–‰ë ¬ ì—°ì‚°ì„ ì ìš©í•œë‹¤.
 		glPushMatrix();// Set current matrix on the stack
 
 
 
 		float clip_value = 5;
-		glOrtho(-clip_value, clip_value, -clip_value, clip_value, 0.01f, 10.0f);	//½ÇÁ¦ »çÀÌÁî 2¹Ì¸¸
+		glOrtho(-clip_value, clip_value, -clip_value, clip_value, 0.01f, 10.0f);	//ì‹¤ì œ ì‚¬ì´ì¦ˆ 2ë¯¸ë§Œ
 
 		glMatrixMode(GL_MODELVIEW);
 		glPushMatrix(); //221103
 
-		//ÇÔ¼ö ¹Û¿¡¼­ ¾Æ·¡ °ªµé ³Ö¾îÁÖ±â
+		//í•¨ìˆ˜ ë°–ì—ì„œ ì•„ë˜ ê°’ë“¤ ë„£ì–´ì£¼ê¸°
 		float size_x = 5.5904;
 		float size_y = 1.2615;
 		float size_z = 5.2045;
@@ -494,7 +494,7 @@ void OBJViewer(int data_num, vector<data_seq>& sequence, vector<texture_image> t
 		glRotated(app_state.yaw, 0, 1, 0);
 
 		glPointSize(1.9f); //The glPointSize function specifies the diameter of rasterized point
-		glEnable(GL_DEPTH_TEST); //opengl ±â´É È°¼ºÈ­
+		glEnable(GL_DEPTH_TEST); //opengl ê¸°ëŠ¥ í™œì„±í™”
 
 		printf("frame %d\n", frame);
 
@@ -505,7 +505,7 @@ void OBJViewer(int data_num, vector<data_seq>& sequence, vector<texture_image> t
 		}
 		render(app_state, frame, sequence, 1);
 
-		//±ôºıÀÓ ¹æÁö
+		//ê¹œë¹¡ì„ ë°©ì§€
 		//glfwSwapBuffers(app);
 
 		//for (int frame = 0; frame < 32; frame++)
@@ -542,7 +542,7 @@ void OBJViewer(int data_num, vector<data_seq>& sequence, vector<texture_image> t
 		cv::Mat model_m;
 
 		GLfloat model[16], projection[16];
-		glGetFloatv(GL_PROJECTION_MATRIX, projection); // ¼±ÅÃÇÑ ¸Å°³º¯¼öÀÇ °ªÀ» ¹İÈ¯
+		glGetFloatv(GL_PROJECTION_MATRIX, projection); // ì„ íƒí•œ ë§¤ê°œë³€ìˆ˜ì˜ ê°’ì„ ë°˜í™˜
 		glGetFloatv(GL_MODELVIEW_MATRIX, model);
 
 		//	for (int i = 0; i < 4; i++)
@@ -557,10 +557,10 @@ void OBJViewer(int data_num, vector<data_seq>& sequence, vector<texture_image> t
 		75321;
 			// OpenGL cleanup
 		glPopMatrix();
-		glMatrixMode(GL_PROJECTION); //ÇöÀç Çà·ÄÀÎ Çà·ÄÀ» ÁöÁ¤
+		glMatrixMode(GL_PROJECTION); //í˜„ì¬ í–‰ë ¬ì¸ í–‰ë ¬ì„ ì§€ì •
 		glPopMatrix();
 		glPopAttrib();
-		glFlush(); //Á¦ÇÑµÈ ½Ã°£¿¡ openglÇÔ¼ö¸¦ °­Á¦·Î ½ÇÇà
+		glFlush(); //ì œí•œëœ ì‹œê°„ì— openglí•¨ìˆ˜ë¥¼ ê°•ì œë¡œ ì‹¤í–‰
 		//glDeleteTextures(2, 0);
 		//glDeleteTextures(2, 0);
 
