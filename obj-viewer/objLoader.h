@@ -19,7 +19,7 @@
 #include <functional>
 
 #define GLFW_INCLUDE_GLU
-#include <GLFW/glfw3.h>		//´Ù¿î¹Ş¾Æ¼­ ¹°·ÁÁáÀ½ ±Ùµ¥ ÀÌ ¹æ¹ıÀÌ ÃÖ¼±?!?
+#include <GLFW/glfw3.h>		//ë‹¤ìš´ë°›ì•„ì„œ ë¬¼ë ¤ì¤¬ìŒ ê·¼ë° ì´ ë°©ë²•ì´ ìµœì„ ?!?
 #include <freeglut_std.h>
 #include <imgui.h>
 #include <imgui_impl_glfw.h> 
@@ -77,8 +77,8 @@ public:
 	void upload_mat(const cv::Mat& Mat_)
 	{
 
-		cv::flip(Mat_, Mat_, 0); // ¼öÆòÀ¸·Î ¹İÀü
-		cvtColor(Mat_, Mat_, cv::COLOR_BGR2RGB); //cvtColar·Î RGBÄÃ·¯·Î º¯È¯
+		cv::flip(Mat_, Mat_, 0); // ìˆ˜í‰ìœ¼ë¡œ ë°˜ì „
+		cvtColor(Mat_, Mat_, cv::COLOR_BGR2RGB); //cvtColarë¡œ RGBì»¬ëŸ¬ë¡œ ë³€í™˜
 
 
 		if (Mat_.empty()) return;
@@ -240,7 +240,7 @@ public:
 		// Draw the images
 		glPushMatrix();
 		glfwGetWindowSize(win, &_width, &_height);
-		glOrtho(0, _width, _height, 0, -1, +1);		//È®ÀÎ
+		glOrtho(0, _width, _height, 0, -1, +1);		//í™•ì¸
 
 		return res;
 	}
