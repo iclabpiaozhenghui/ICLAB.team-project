@@ -27,7 +27,7 @@ int main()
 
 	for (int i = 0; i < data_num; i++)
 	{
-		string obj_path = "./Low_Proven1_stt/" + std::to_string(data_min + i) + "/textured_model.obj";							//°æ·Î1/3
+		string obj_path = "./Low_Proven1_stt/" + std::to_string(data_min + i) + "/textured_model.obj";							//Â°Ã¦Â·ÃŽ1/3
 		
 		OBJLoader(obj_path, i, sequence, texture_num);
 		
@@ -37,8 +37,8 @@ int main()
 
 
 
-		string tex_path = "./Low_Proven1_stt/" + std::to_string(data_min + i) + "/textured_model_material0000_map_Kd.png";				//°æ·Î2/3
-		string tex_path2 = "./Low_Proven1_stt/" + std::to_string(data_min + i) + "/textured_model_material0001_map_Kd.png";				//°æ·Î3/3
+		string tex_path = "./Low_Proven1_stt/" + std::to_string(data_min + i) + "/textured_model_material0000_map_Kd.png";				//Â°Ã¦Â·ÃŽ2/3
+		string tex_path2 = "./Low_Proven1_stt/" + std::to_string(data_min + i) + "/textured_model_material0001_map_Kd.png";				//Â°Ã¦Â·ÃŽ3/3
 
 		cv::Mat texture_01 = cv::imread(tex_path, cv::IMREAD_UNCHANGED);
 		cv::Mat texture_02;
