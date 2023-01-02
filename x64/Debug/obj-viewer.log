@@ -1,0 +1,8 @@
+﻿  objLoader.cpp
+C:\project\c\obj-viewer\obj-viewer\obj-viewer\objLoader.cpp(91,23): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
+C:\project\c\obj-viewer\obj-viewer\obj-viewer\objLoader.cpp(92,23): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
+C:\project\c\obj-viewer\obj-viewer\obj-viewer\objLoader.cpp(93,23): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
+C:\project\c\obj-viewer\obj-viewer\obj-viewer\objLoader.cpp(95,26): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
+C:\project\c\obj-viewer\obj-viewer\obj-viewer\objLoader.cpp(96,26): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
+C:\project\c\obj-viewer\obj-viewer\obj-viewer\objLoader.cpp(97,25): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
+C:\project\c\obj-viewer\obj-viewer\obj-viewer\objLoader.cpp(105,2): error C3861: 'gluLookAt': 식별자를 찾을 수 없습니다.
